@@ -23,7 +23,8 @@ RUN apk add --no-cache \
     php7-pecl-imagick \
     php7-exif \
     php7-intl \
-    php7-zip
+    php7-zip \
+    pcre2
 
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
