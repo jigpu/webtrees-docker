@@ -4,6 +4,9 @@ ARG VERSION=2.0.16
 ARG FILENAME=webtrees-${VERSION}.zip
 ARG URL=https://github.com/fisharebest/webtrees/releases/download/${VERSION}/${FILENAME}
 
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
 RUN apk add --no-cache \
     curl \
     unzip \
@@ -22,4 +25,4 @@ RUN curl -sL "${URL}" > /tmp/webtrees.zip \
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["php-fpm", "-c", "/etc/php"]
