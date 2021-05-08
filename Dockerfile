@@ -17,6 +17,8 @@ RUN apk add --no-cache \
     php7-intl \
     php7-zip
 
+RUN cp /etc/php7/conf.d/* /usr/local/etc/php/conf.d
+
 RUN curl -sL "${URL}" > /tmp/webtrees.zip \
     && unzip /tmp/webtrees.zip -d /tmp \
     && rm /tmp/webtrees.zip \
@@ -25,4 +27,4 @@ RUN curl -sL "${URL}" > /tmp/webtrees.zip \
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["php-fpm", "-c", "/etc/php"]
+CMD ["php-fpm"]
