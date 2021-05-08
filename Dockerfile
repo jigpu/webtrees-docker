@@ -4,11 +4,6 @@ ARG VERSION=2.0.16
 ARG FILENAME=webtrees-${VERSION}.zip
 ARG URL=https://github.com/fisharebest/webtrees/releases/download/${VERSION}/${FILENAME}
 
-COPY docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
-
-COPY php.ini /usr/local/etc/php/
-
 RUN apk add --no-cache \
     curl \
     unzip \
@@ -17,15 +12,22 @@ RUN apk add --no-cache \
     php7-pecl-imagick \
     php7-exif \
     php7-intl \
-    php7-zip
-
-RUN cp /etc/php7/conf.d/* /usr/local/etc/php/conf.d
+    php7-zip \
+    pcre2
 
 RUN curl -sL "${URL}" > /tmp/webtrees.zip \
     && unzip /tmp/webtrees.zip -d /tmp \
     && rm /tmp/webtrees.zip \
     && chown -R www-data:www-data /tmp/webtrees \
     && mv /tmp/webtrees/* /var/www/html
+
+RUN cp /etc/php7/conf.d/* /usr/local/etc/php/conf.d
+
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
+COPY php.ini /usr/local/etc/php/
+
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/docker-entrypoint.sh"]
