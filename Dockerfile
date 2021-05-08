@@ -35,4 +35,4 @@ COPY php.ini /etc/php7/
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["php-fpm7"]
