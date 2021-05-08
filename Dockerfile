@@ -7,6 +7,8 @@ ARG URL=https://github.com/fisharebest/webtrees/releases/download/${VERSION}/${F
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
+COPY php.ini /usr/local/etc/php/
+
 RUN apk add --no-cache \
     curl \
     unzip \
