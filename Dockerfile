@@ -1,5 +1,5 @@
-#FROM php:7.4-fpm-alpine
-FROM alpine:3.13
+FROM php:7.4-fpm-alpine
+#FROM alpine:3.13
 
 ARG VERSION=2.0.16
 ARG FILENAME=webtrees-${VERSION}.zip
@@ -35,5 +35,5 @@ COPY php.ini /etc/php7/
 
 
 WORKDIR /var/www/html
-#ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["php-fpm7"]
