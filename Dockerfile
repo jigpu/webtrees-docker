@@ -6,8 +6,8 @@ ARG FILENAME=webtrees-${VERSION}.zip
 ARG URL=https://github.com/fisharebest/webtrees/releases/download/${VERSION}/${FILENAME}
 
 RUN apk add --no-cache curl unzip
-RUN adduser www-data --system --disabled-password --no-create-home && addgroup www-data
-RUN mkdir -p /var/www/html
+#RUN adduser www-data --system --disabled-password --no-create-home && addgroup www-data
+#RUN mkdir -p /var/www/html
 
 RUN curl -sL "${URL}" > /tmp/webtrees.zip \
     && unzip /tmp/webtrees.zip -d /tmp \
