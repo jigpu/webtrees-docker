@@ -1,5 +1,8 @@
 #!/bin/sh
+
+# Fix up permissions before we get started
 chown -R www-data:www-data data
 chmod -R 777 data
-# && chmod -R 775 data
-#chown -R www-data:www-data data/media && chmod -R 775 data/media
+
+# Swap out the shell process for PHP
+exec php-fpm

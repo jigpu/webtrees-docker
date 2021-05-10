@@ -33,4 +33,4 @@ COPY php.ini /usr/local/etc/php/
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["php-fpm"]
+#CMD ["/usr/local/sbin/php-fpm"]
