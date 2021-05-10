@@ -4,7 +4,7 @@ ARG VERSION=2.0.16
 ARG FILENAME=webtrees-${VERSION}.zip
 ARG URL=https://github.com/fisharebest/webtrees/releases/download/${VERSION}/${FILENAME}
 
-RUN apk add --no-cache curl unzip
+RUN apk add --no-cache curl unzip imagemagick
 
 RUN curl -sL "${URL}" > /tmp/webtrees.zip \
     && unzip /tmp/webtrees.zip -d /tmp \
