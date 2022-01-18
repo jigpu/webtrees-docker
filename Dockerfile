@@ -1,6 +1,6 @@
 FROM hermsi/alpine-fpm-php:7.4
 
-ARG VERSION=2.0.16
+ARG VERSION=2.0.19
 ARG FILENAME=webtrees-${VERSION}.zip
 ARG URL=https://github.com/fisharebest/webtrees/releases/download/${VERSION}/${FILENAME}
 
